@@ -1,4 +1,4 @@
-#README - Responsive Design Lab - Jason Fan
+#Lab 4 - Responsive Design - Jason Fan
 
 ##What has been implemented correctly/incorrectly
 
