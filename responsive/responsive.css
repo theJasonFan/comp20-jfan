@@ -22,7 +22,6 @@ and (max-width : 1200px){
     }
 }
 
-
 @media only screen
 and (min-width : 1001px) 
 and (max-width : 1100px){
@@ -62,6 +61,7 @@ and (max-width : 700px){
         background-position: -128px -240px;
     }
 }
+
 @media only screen
 and (min-width : 501px) 
 and (max-width : 600px){
@@ -69,6 +69,7 @@ and (max-width : 600px){
         background-position: -256px -240px;
     }
 }
+
 @media only screen
 and (min-width : 401px) 
 and (max-width : 500px){
@@ -76,6 +77,7 @@ and (max-width : 500px){
         background-position: -384px -240px;
     }
 }
+
 @media only screen
 and (max-width : 400px){
     div.software {
