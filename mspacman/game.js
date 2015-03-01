@@ -6,6 +6,6 @@ function init() {
 
     img.onload = function() {
         ctx.drawImage(img, 322, 2, 465, 136, 0, 0, 465, 136);
-        ctx.drawImage(img, 82, 20, 20, 20, 40, 25, 20, 20)
+        ctx.drawImage(img, 82, 20, 20, 20, 35, 25, 20, 20)
     }
 }
