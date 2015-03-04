@@ -1,3 +1,6 @@
+// game.js
+// Jason Fan - 3/3/2015
+// JavaScript for drawing Pacman image
 function init() {
     var canvas = document.getElementById('game_canvas');
     var ctx = canvas.getContext('2d');
