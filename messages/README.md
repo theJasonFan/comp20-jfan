@@ -13,7 +13,7 @@
 Thanks to Prof. Ming Chow for making his examples for DOM lecture available, I used the style-sheet from his #FML example to format the messages
 
 ###Questions regarding Same Origin Policy:
-#####Is it possible to request the data from a different origin (e.g., [`http://messagehub.herokuapp.com/`](ttp://messagehub.herokuapp.com/) or from your local machine (from `file:///`) from using XMLHttpRequest?
+#####Is it possible to request the data from a different origin (e.g., [`http://messagehub.herokuapp.com/`](http://messagehub.herokuapp.com/) or from your local machine (from `file:///`) from using XMLHttpRequest?
 
 No.
 
