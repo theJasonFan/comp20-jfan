@@ -21,5 +21,4 @@ function parseData()
                 toUpdate.innerHTML += '<p><span class="msg">' + listObjects[i].content + 
                                       ' <span class="username">' + listObjects[i].username + '</span></span></p>';
         }
-    
 }
