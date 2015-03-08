@@ -1,22 +1,21 @@
 mylat = 0;
 mylng = 0;
-login = "LindyContreras"
-url = "https://secret-about-box.herokuapp.com/sendLocation"
+url = "https://secret-about-box.herokuapp.com/sendLocation";
 
 
 
 function getMyLocation() 
 {
-console.log("1. In getMyLocation()");
-if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
-    navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("2. Finally got your location!");
-        myLat = position.coords.latitude;
-        myLng = position.coords.longitude;
-        elem = document.getElementById("info");
-        elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
-        console.log("3. Leaving the function(position)...");
-    });
+    console.log("1. In getMyLocation()");
+    if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("2. Finally got your location!");
+            myLat = position.coords.latitude;
+            myLng = position.coords.longitude;
+            elem = document.getElementById("info");
+            elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
+            console.log("3. Leaving the function(position)...");
+        });
 }
     else {
         alert("Geolocation is not supported by your web browser.  What a shame!");
@@ -26,7 +25,7 @@ if (navigator.geolocation) { // the navigator.geolocation object is supported on
 
 function postLoc()
 {
-    var params = '"login="' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
+    var params = '"login=' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
