@@ -30,9 +30,8 @@ function postLoc()
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.setRequestHeader("COntent-length", params.length);
+    request.setRequestHeader("Content-length", params.length);
     request.setRequestHeader("Connection", "close")
-    request.open("GET", "data.json",true);
     request.onreadystatechange = parseData;
     request.send();
 }
