@@ -15,8 +15,8 @@ function getMyLocation()
             elem = document.getElementById("info");
             elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
             console.log("3. Leaving the function(position)...");
-        });
-}
+        }
+    }
     else {
         alert("Geolocation is not supported by your web browser.  What a shame!");
     }
