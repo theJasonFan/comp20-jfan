@@ -20,7 +20,7 @@ function getMyLocation()
     }
         console.log("4. Leaving getMyLocation(). Good bye cruel world!");
 } 
-/*
+
 function postLoc()
 {
     var params = '"login=' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
@@ -32,7 +32,7 @@ function postLoc()
     request.onreadystateChange = parseData;
     request.send(params);
 }
-
+/*
 function parseData() 
 {
     if (request.readyState == 4 && request.status == 200) {
