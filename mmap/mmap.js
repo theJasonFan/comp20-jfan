@@ -33,7 +33,7 @@ function postLoc()
     request.setRequestHeader("Content-length", params.length);
     request.setRequestHeader("Connection", "close")
     request.onreadystatechange = parseData;
-    request.send();
+    request.send(params);
 }
 
 function parseData() 
@@ -41,9 +41,7 @@ function parseData()
     if (request.readyState == 4 && request.status == 200) {
         toUpdate = document.getElementById("info");
         responseText = JSON.parse(request.responseText);
-        for ( i = 0; i < listObjects.length; i++)
-            toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    }
+        toUpdate.innerHTML += '<p>' + responseText + '</p>';
 }
 
 function init()
