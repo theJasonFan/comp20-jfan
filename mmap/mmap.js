@@ -1,6 +1,7 @@
 mylat = 0;
 mylng = 0;
 login = "LindyContreras"
+url = "https://secret-about-box.herokuapp.com/sendLocation"
 
 
 
