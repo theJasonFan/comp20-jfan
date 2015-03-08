@@ -14,7 +14,7 @@ function parseData()
             console.log("got messages!")
             listObjects = JSON.parse(request.responseText);
             for ( i = 0; i < listObjects.length; i++)
-            toUpdate.innerHTML += '<p class="msg">' + listObjects[i] + '</p>';
+            toUpdate.innerHTML += '<p class="msg">' + listObjects[i].content + '</p>';
         }
     
 }
