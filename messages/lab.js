@@ -15,7 +15,7 @@ function parseData()
             listObjects = JSON.parse(request.responseText);
             for ( i = 0; i < listObjects.length; i++)
             toUpdate.innerHTML += '<p class="msg">' + listObjects[i].content + 
-                                  '<span class=username>' + listObjects[i].username + '</span></p>';
+                                  ' <span class=username>' + listObjects[i].username + '</span></p>';
         }
     
 }
