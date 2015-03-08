@@ -12,7 +12,9 @@ function parseData()
         if (request.readyState == 4 && request.status == 200) {
             toUpdate = document.getElementById("messages");
             console.log("got messages!")
-            toUpdate.innerHTML += '<p class="msg">' + JSON.parse(request.responseText) + '</p>';
+            listObjects = JSON.parse(request.responseText);
+            for ( i = 0; i < listObjects.length; i++)
+            toUpdate.innerHTML += '<p class="msg">' + listObjects[i] + '</p>';
         }
     
 }
