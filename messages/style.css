@@ -1,4 +1,10 @@
-/* Your CSS here... */
+/*  style.css
+    08/03/15
+    Comp 20 - Lab 6: Messages
+    Jason Fan
+	ACKNOWLEDGEMENTS: Taken from Ming Chow's DOM example for Comp 20 - spring 2015
+*/
+
 body {
 	font-family: "Lucida Grande", Tahoma, sans-serif;
 	font-size: 14px;
