@@ -3,7 +3,7 @@
 ###What has been implemented propery:
 * All required aspects have been implemented properly, only ```lab.js``` and ```style.css``` has been changed
 
-###Identify anyone whom you have collaborated and discussed the assigment
+###Collaboration and Discussion
 * I discussed the assigment with my most lovely, and ~~fabulous~~ ~~awesome~~ ~~fantastic~~ great roomate Norman Young
 
 ###Time spent:

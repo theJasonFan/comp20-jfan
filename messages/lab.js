@@ -18,8 +18,8 @@ function parseData()
             toUpdate = document.getElementById("messages");
             listObjects = JSON.parse(request.responseText);
             for ( i = 0; i < listObjects.length; i++)
-                toUpdate.innerHTML += '<p class="msg">' + listObjects[i].content + 
-                                      ' <span class=username>' + listObjects[i].username + '</span></p>';
+                toUpdate.innerHTML += '<p><span class="msg">' + listObjects[i].content + 
+                                      ' </span><span class="username">' + listObjects[i].username + '</span></p>';
         }
     
 }
