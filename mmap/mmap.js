@@ -27,6 +27,7 @@ function postLoc()
 {
     var params = '"login="' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
     request = new XMLHttpRequest();
+    request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.setRequestHeader("COntent-length", params.length);
     http.setRequestHeader("Connection", "close")
