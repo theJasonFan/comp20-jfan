@@ -10,7 +10,7 @@ function parse()
 function parseData() 
 {
         if (request.readyState == 4 && request.status == 200) {
-            toUpdate = document.getElementByID("messages");
+            toUpdate = document.getElementById("messages");
             console.log("got messages!")
             toUpdate.innerHTML += '<p class="msg">' + request.data + '</p>';
         }
