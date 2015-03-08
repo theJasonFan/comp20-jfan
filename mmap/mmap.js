@@ -2,8 +2,6 @@ mylat = 0;
 mylng = 0;
 url = "https://secret-about-box.herokuapp.com/sendLocation";
 
-
-
 function getMyLocation() 
 {
     console.log("1. In getMyLocation()");
@@ -22,7 +20,7 @@ function getMyLocation()
     }
         console.log("4. Leaving getMyLocation(). Good bye cruel world!");
 } 
-
+/*
 function postLoc()
 {
     var params = '"login=' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
@@ -31,7 +29,7 @@ function postLoc()
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.setRequestHeader("Content-length", params.length);
     request.setRequestHeader("Connection", "close");
-    request.onreadystatechange = parseData;
+    request.onreadystateChange = parseData;
     request.send(params);
 }
 
@@ -42,7 +40,7 @@ function parseData()
         responseText = JSON.parse(request.responseText);
         toUpdate.innerHTML += '<p>' + responseText + '</p>';
 }
-
+*/
 function init()
 {
     getMyLocation();
