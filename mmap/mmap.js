@@ -2,11 +2,7 @@ mylat = 0;
 mylng = 0;
 login = "LindyContreras"
 
-function init()
-{
-getMyLocation();
-postLoc();
-}
+
 
 function getMyLocation() 
 {
@@ -41,10 +37,16 @@ function postLoc()
 
 function parseData() 
 {
-if (request.readyState == 4 && request.status == 200) {
-    toUpdate = document.getElementById("info");
-    responseText = JSON.parse(request.responseText);
-    for ( i = 0; i < listObjects.length; i++)
-        toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    if (request.readyState == 4 && request.status == 200) {
+        toUpdate = document.getElementById("info");
+        responseText = JSON.parse(request.responseText);
+        for ( i = 0; i < listObjects.length; i++)
+            toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    }
 }
+
+function init()
+{
+    getMyLocation();
+    postLoc();
 }
