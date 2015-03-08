@@ -32,7 +32,7 @@ function postLoc()
     request.onreadystateChange = parseData;
     request.send(params);
 }
-/*
+
 function parseData() 
 {
     if (request.readyState == 4 && request.status == 200) {
@@ -40,7 +40,7 @@ function parseData()
         responseText = JSON.parse(request.responseText);
         toUpdate.innerHTML += '<p>' + responseText + '</p>';
 }
-*/
+
 function init()
 {
     getMyLocation();
