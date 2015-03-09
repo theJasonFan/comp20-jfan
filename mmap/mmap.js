@@ -40,6 +40,7 @@ function parseData()
         toUpdate = document.getElementById("info");
         responseText = JSON.parse(request.responseText);
         toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    }
 }
 
 function init()
