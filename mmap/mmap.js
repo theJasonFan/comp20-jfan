@@ -11,6 +11,7 @@ function init()
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
             postLoc();
+            reanderMap();
             console.log("3. Leaving the function(position)...");
         });
     }
@@ -46,5 +47,35 @@ function parseResponse()
 
 function printLocs(data)
 {
- elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
+    elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
 }
+
+function renderMap()
+            {
+                me = new google.maps.LatLng(myLat, myLng);
+                
+                // Update map and go there...
+                map.panTo(me);
+    
+                // Create a marker
+                marker = new google.maps.Marker({
+                    position: me,
+                    title: "Here I Am!"
+                });
+                marker.setMap(map);
+                    
+                // Open info window on click of marker
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(marker.title);
+                    infowindow.open(map, marker);
+                });
+                
+                // Calling Google Places API
+                var request = {
+                    location: me,
+                    radius: '500',
+                    types: ['food']
+                };
+                service = new google.maps.places.PlacesService(map);
+                service.search(request, callback);
+            }
