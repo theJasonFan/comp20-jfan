@@ -13,7 +13,6 @@ function getMyLocation()
             myLng = position.coords.longitude;
             elem = document.getElementById("info");
             elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
-            params = 'login=' + login + '&lat=' + mylat + '&lng=' + mylng;
             postLoc();
             console.log("3. Leaving the function(position)...");
         });
