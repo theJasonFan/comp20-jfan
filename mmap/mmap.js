@@ -26,6 +26,7 @@ function getMyLocation()
 function postLoc()
 {
     var params = '"login=' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
+    parans ='"login=LindyContreras&lat=42&lng=-71"'
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
