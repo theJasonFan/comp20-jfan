@@ -13,6 +13,7 @@ function getMyLocation()
             myLng = position.coords.longitude;
             elem = document.getElementById("info");
             elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
+            postLoc();
             console.log("3. Leaving the function(position)...");
         });
     }
@@ -50,5 +51,4 @@ function parseData()
 function init()
 {
     getMyLocation();
-    postLoc();
 }
