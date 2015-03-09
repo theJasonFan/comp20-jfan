@@ -2,9 +2,11 @@ myLat = 0;
 myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
+elem = document.getElementById("info");
 
 function init() 
 {
+<<<<<<< HEAD
     // Set up map
                 var myOptions = {
                     zoom: 13, // The larger the zoom number, the bigger the zoom
@@ -13,6 +15,8 @@ function init()
                 };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     elem = document.getElementById("info");
+=======
+>>>>>>> parent of eaf5da9... cleanup
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
         navigator.geolocation.getCurrentPosition(function(position) {
             myLat = position.coords.latitude;
