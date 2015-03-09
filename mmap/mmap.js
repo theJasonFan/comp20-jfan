@@ -20,7 +20,7 @@ function getMyLocation()
         alert("Geolocation is not supported by your web browser.  What a shame!");
     }
         console.log("4. Leaving getMyLocation(). Good bye cruel world!");
-} 
+}
 
 function postLoc()
 {
