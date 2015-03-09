@@ -14,7 +14,14 @@ function getMyLocation()
             elem = document.getElementById("info");
             elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
             params = 'login=' + login + '&lat=' + mylat + '&lng=' + mylng;
-            postLoc();
+            request = new XMLHttpRequest();
+            request.open("POST", url, true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.onreadystatechange = parseData;
+            request.send(params);
+            console.log(params);
+            console.log("params sent");
+            //postLoc();
             console.log("3. Leaving the function(position)...");
         });
     }
