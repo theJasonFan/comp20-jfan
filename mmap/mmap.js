@@ -22,6 +22,17 @@ function getMyLocation()
         console.log("4. Leaving getMyLocation(). Good bye cruel world!");
 }
 
+function parseData() 
+{
+    console.log("sending params");
+    //if (request.readyState == 4 && request.status == 200) {
+        //console.log("got data back");
+        toUpdate = document.getElementById("info");
+        responseText = JSON.parse(request.responseText);
+        toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    //}
+}
+
 function postLoc()
 {
     var params = '"login=' + login + '&lat=' + mylat + '&lng=' + mylng +'"';
@@ -33,17 +44,6 @@ function postLoc()
     request.onreadystateChange = parseData;
     request.send(params);
     console.log("params sent");
-}
-
-function parseData() 
-{
-    console.log("sending parmes");
-    //if (request.readyState == 4 && request.status == 200) {
-        //console.log("got data back");
-        toUpdate = document.getElementById("info");
-        responseText = JSON.parse(request.responseText);
-        toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    //}
 }
 
 function init()
