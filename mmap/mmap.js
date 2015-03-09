@@ -2,10 +2,10 @@ myLat = 0;
 myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
-elem = document.getElementById("info");
 
 function init() 
 {
+    elem = document.getElementById("info");
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
         navigator.geolocation.getCurrentPosition(function(position) {
             myLat = position.coords.latitude;
