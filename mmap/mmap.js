@@ -33,6 +33,7 @@ function postLoc()
     //request.setRequestHeader("Connection", "close");
     request.onreadystatechange = parseData;
     request.send(params);
+    console.log(params);
     console.log("params sent");
 }
 
