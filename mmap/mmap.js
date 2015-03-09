@@ -31,12 +31,7 @@ function postLoc()
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     //request.setRequestHeader("Content-length", params.length);
     //request.setRequestHeader("Connection", "close");
-    request.onreadystateChange = function() {
-        console.log("readystate changed")
-        toUpdate = document.getElementById("info");
-        responseText = JSON.parse(request.responseText);
-        toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    }
+    request.onreadystatechange = parseData;
     request.send(params);
     console.log("params sent");
 }
