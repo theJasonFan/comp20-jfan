@@ -43,9 +43,15 @@ function parseData()
     if (request.readyState == 4 && request.status == 200) {
         console.log("got data back");
         toUpdate = document.getElementById("info");
-        responseText = JSON.parse(request.responseText);
-        toUpdate.innerHTML += '<p>' + responseText + '</p>';
+        data = JSON.parse(request.responseText);
+        for (i = 0; i < data.length; i++)
+            printLocs(data[i]);
     }
+}
+function printLocs(data)
+{
+    elem = document.getElementById("info");
+    elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
 }
 
 function init()
