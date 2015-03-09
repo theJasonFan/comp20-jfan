@@ -1,5 +1,5 @@
-mylat = 0;
-mylng = 0;
+myLat = 0;
+myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
 
@@ -14,14 +14,7 @@ function getMyLocation()
             elem = document.getElementById("info");
             elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
             params = 'login=' + login + '&lat=' + mylat + '&lng=' + mylng;
-            request = new XMLHttpRequest();
-            request.open("POST", url, true);
-            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            request.onreadystatechange = parseData;
-            request.send(params);
-            console.log(params);
-            console.log("params sent");
-            //postLoc();
+            postLoc();
             console.log("3. Leaving the function(position)...");
         });
     }
@@ -34,7 +27,7 @@ function getMyLocation()
 
 function postLoc()
 {
-    //var params = 'login=' + login + '&lat=' + mylat + '&lng=' + mylng;
+    var params = 'login=' + login + '&lat=' + myLat + '&lng=' + myLng;
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
