@@ -46,5 +46,5 @@ function parseResponse()
 
 function printLocs(data)
 {
- elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
+    elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
 }
