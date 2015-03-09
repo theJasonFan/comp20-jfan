@@ -5,6 +5,12 @@ url = "https://secret-about-box.herokuapp.com/sendLocation";
 
 function init() 
 {
+    // Set up map
+                var myOptions = {
+                    zoom: 13, // The larger the zoom number, the bigger the zoom
+                    center: landmark,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     elem = document.getElementById("info");
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
