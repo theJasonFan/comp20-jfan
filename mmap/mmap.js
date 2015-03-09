@@ -5,6 +5,7 @@ url = "https://secret-about-box.herokuapp.com/sendLocation";
 
 function init() 
 {
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     elem = document.getElementById("info");
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
         navigator.geolocation.getCurrentPosition(function(position) {
