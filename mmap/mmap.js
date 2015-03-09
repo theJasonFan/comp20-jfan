@@ -39,12 +39,12 @@ function postLoc()
 function parseData() 
 {
     console.log("sending params");
-    //if (request.readyState == 4 && request.status == 200) {
-        //console.log("got data back");
+    if (request.readyState == 4 && request.status == 200) {
+        console.log("got data back");
         toUpdate = document.getElementById("info");
         responseText = JSON.parse(request.responseText);
         toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    //}
+    }
 }
 
 function init()
