@@ -28,8 +28,8 @@ function postLoc()
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //request.setRequestHeader("Content-length", params.length);
-    //request.setRequestHeader("Connection", "close");
+    request.setRequestHeader("Content-length", params.length);
+    request.setRequestHeader("Connection", "close");
     request.onreadystateChange = parseData;
     request.send(params);
     console.log("params sent");
@@ -38,12 +38,12 @@ function postLoc()
 function parseData() 
 {
     console.log("sending parmes");
-    if (request.readyState == 4 && request.status == 200) {
-        console.log("got data back");
+    //if (request.readyState == 4 && request.status == 200) {
+        //console.log("got data back");
         toUpdate = document.getElementById("info");
         responseText = JSON.parse(request.responseText);
         toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    }
+    //}
 }
 
 function init()
