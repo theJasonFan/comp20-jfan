@@ -2,17 +2,14 @@ myLat = 0;
 myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
+elem = document.getElementById("info");
 
-function getMyLocation() 
+function init() 
 {
-    console.log("1. In getMyLocation()");
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
         navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("2. Finally got your location!");
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
-            elem = document.getElementById("info");
-            elem.innerHTML += "<h1>You are in " + myLat + ", " + myLng + "</h1>";
             postLoc();
             console.log("3. Leaving the function(position)...");
         });
@@ -20,7 +17,6 @@ function getMyLocation()
     else {
         alert("Geolocation is not supported by your web browser.  What a shame!");
     }
-        console.log("4. Leaving getMyLocation(). Good bye cruel world!");
 }
 
 
@@ -30,13 +26,13 @@ function postLoc()
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.onreadystatechange = parseData;
+    request.onreadystatechange = parseResponse;
     request.send(params);
     console.log(params);
     console.log("params sent");
 }
 
-function parseData() 
+function parseResponse() 
 {
     console.log("sending params");
     if (request.readyState == 4 && request.status == 200) {
@@ -47,13 +43,8 @@ function parseData()
             printLocs(data[i]);
     }
 }
+
 function printLocs(data)
 {
-    elem = document.getElementById("info");
-    elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
-}
-
-function init()
-{
-    getMyLocation();
+ elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
 }
