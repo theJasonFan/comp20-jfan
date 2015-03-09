@@ -7,6 +7,7 @@ elem = document.getElementById("info");
 function init() 
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Set up map
                 var myOptions = {
                     zoom: 13, // The larger the zoom number, the bigger the zoom
@@ -15,6 +16,8 @@ function init()
                 };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     elem = document.getElementById("info");
+=======
+>>>>>>> parent of eaf5da9... cleanup
 =======
 >>>>>>> parent of eaf5da9... cleanup
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
