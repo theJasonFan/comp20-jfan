@@ -22,16 +22,6 @@ function getMyLocation()
         console.log("4. Leaving getMyLocation(). Good bye cruel world!");
 }
 
-function parseData() 
-{
-    console.log("sending params");
-    //if (request.readyState == 4 && request.status == 200) {
-        //console.log("got data back");
-        toUpdate = document.getElementById("info");
-        responseText = JSON.parse(request.responseText);
-        toUpdate.innerHTML += '<p>' + responseText + '</p>';
-    //}
-}
 
 function postLoc()
 {
@@ -41,9 +31,25 @@ function postLoc()
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     //request.setRequestHeader("Content-length", params.length);
     //request.setRequestHeader("Connection", "close");
-    request.onreadystateChange = parseData;
+    request.onreadystateChange = function() {
+        console.log("readystate changed")
+        toUpdate = document.getElementById("info");
+        responseText = JSON.parse(request.responseText);
+        toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    }
     request.send(params);
     console.log("params sent");
+}
+
+function parseData() 
+{
+    console.log("sending params");
+    //if (request.readyState == 4 && request.status == 200) {
+        //console.log("got data back");
+        toUpdate = document.getElementById("info");
+        responseText = JSON.parse(request.responseText);
+        toUpdate.innerHTML += '<p>' + responseText + '</p>';
+    //}
 }
 
 function init()
