@@ -69,11 +69,11 @@ function renderMap()
         position: me,
         title: "This is where I am!"
     })
-    marker.setMap(map);
+    meMarker.setMap(map);
 
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(marker.title);
-        infowindow.open(map, marker);
+    google.maps.event.addListener(meMarker, 'click', function() {
+        infowindow.setContent(meMarker.title);
+        infowindow.open(map, meMarker);
     })
 }
 
