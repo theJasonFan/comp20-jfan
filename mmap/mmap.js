@@ -65,17 +65,18 @@ function renderMap()
 {
     console.log("in renderMap")
     me = new google.maps.LatLng(myLat, myLng)
-    map.panTo(me);
+    map.panTo(me); 
+    console.log("panned");
     meMarker = new google.maps.Marker({
         position: me,
         title: "This is where I am!"
-    })
+    });
     meMarker.setMap(map);
-
+    console.log("meMarker set");
     google.maps.event.addListener(meMarker, 'click', function() {
         infowindow.setContent(meMarker.title);
         infowindow.open(map, meMarker);
-    })
+    });
 }
 
 
