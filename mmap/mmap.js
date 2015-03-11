@@ -42,7 +42,8 @@ function renderMap()
     // MARKER FOR MYSELF
     meMarker = new google.maps.Marker({
         position: me,
-        title: "This is where I am!"
+        title: login,
+        icon: 'funny_icon.png'
     });
     meMarker.setMap(map);
     console.log("meMarker set");
