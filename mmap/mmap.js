@@ -107,9 +107,9 @@ Number.prototype.toRad = function() {
 function distanceBetween(lat1, lng1, lat2, lng2) {
     var R = 3959;
     var dlat = lat2 - lat1;
-    var rlat = x1.toRad();
+    var rlat = dlat.toRad();
     var dlng = lng2 - lng1;
-    var rlng = x1.toRad();
+    var rlng = dlng.toRad();
     var a = Math.sin(rlat/2) * Math.sin(rlat/2) + 
                     Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
                     Math.sin(rlng/2) * Math.sin(rlng/2);  
