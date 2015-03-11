@@ -63,6 +63,7 @@ function printLocs(data)
 
 function renderMap()
 {
+    console.log("in renderMap")
     me = new google.maps.LatLng(myLat, myLng)
     map.panTo(me);
     meMarker = new google.maps.Marker({
