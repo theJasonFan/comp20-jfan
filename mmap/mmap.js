@@ -32,9 +32,32 @@ function getLocations()
     }
 }
 
-
-function postLoc()
+function renderMap()
 {
+    console.log("in renderMap")
+    me = new google.maps.LatLng(myLat, myLng)
+    map.panTo(me); 
+    console.log("panned");
+
+    // MARKER FOR MYSELF
+    meMarker = new google.maps.Marker({
+        position: me,
+        title: "This is where I am!"
+    });
+    meMarker.setMap(map);
+    console.log("meMarker set");
+    google.maps.event.addListener(meMarker, 'click', function() {
+        infowindow.setContent(meMarker.title);
+        infowindow.open(map, meMarker);
+    });
+
+    // MARKER FOR OTHERS
+    markOthers();
+}
+
+function markOthers()
+{
+    //POST to herokuapp
     var params = 'login=' + login + '&lat=' + myLat + '&lng=' + myLng;
     request = new XMLHttpRequest();
     request.open("POST", url, true);
@@ -52,36 +75,27 @@ function parseResponse()
         console.log("got data back");
         toUpdate = document.getElementById("info");
         data = JSON.parse(request.responseText);
-        for (i = 0; i < data.length; i++)
-            printLocs(data[i]);
+        for (i = 1; i < data.length; i++)
+            createMarker(data[i]);
     }
 }
 
-function printLocs(data)
+function createMarker(person)
 {
-    elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
-}
-
-function renderMap()
-{
-    console.log("in renderMap")
-    me = new google.maps.LatLng(myLat, myLng)
-    map.panTo(me); 
-    console.log("panned");
-    meMarker = new google.maps.Marker({
-        position: me,
-        title: "This is where I am!"
+    var pos = new google.maps.LatLng(person.lat, person.lng)
+    // MARKER FOR MYSELF
+    var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        title: person.login
     });
-    meMarker.setMap(map);
-    console.log("meMarker set");
+    //marker.setMap(map);
+    //console.log("Marker set");
     google.maps.event.addListener(meMarker, 'click', function() {
-        infowindow.setContent(meMarker.title);
-        infowindow.open(map, meMarker);
+        infowindow.setContent(marker.title);
+        infowindow.open(map, marker);
     });
 }
-
-
-
 
 
 
