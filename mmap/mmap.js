@@ -1,3 +1,5 @@
+//ACKNOWLEDGEMENTS: IvoryMalinov @  piq.codeus.net/picuter/70010/sumo_wrestler
+
 myLat = 0;
 myLng = 0;
 login = "LindyContreras";
@@ -43,7 +45,7 @@ function renderMap()
     meMarker = new google.maps.Marker({
         position: me,
         title: login,
-        icon: 'funny_icon.png'
+        icon: 'funny_icon.png' 
     });
     meMarker.setMap(map);
     console.log("meMarker set");
@@ -88,7 +90,7 @@ function createMarker(person)
     var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: person.login
+        title: person.login + ':\n' + distanceBetween(myLat, myLng, person.lat, person.lng) + ' Miles away';
     });
     //marker.setMap(map);
     //console.log("Marker set");
@@ -97,6 +99,25 @@ function createMarker(person)
         infowindow.open(map, marker);
     });
 }
+
+Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+}
+
+function distanceBetween(lat1, lng1, lat2, lng2) {
+    var R = 3959;
+    var dlat = lat2 - lat1;
+    var rlat = x1.toRad();
+    var dlng = lng2 - lng1;
+    var rlng = x1.toRad();
+    var a = Math.sin(rlat/2) * Math.sin(rlat/2) + 
+                    Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                    Math.sin(rlng/2) * Math.sin(rlng/2);  
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; 
+    return d;
+}
+
 
 
 
