@@ -1,4 +1,7 @@
-//ACKNOWLEDGEMENTS: IvoryMalinov @  piq.codeus.net/picuter/70010/sumo_wrestler
+// ACKNOWLEDGEMENTS: 
+// Custom image for me, IvoryMalinov @  piq.codeus.net/picuter/70010/sumo_wrestler
+// Haversine formula - http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
+
 
 myLat = 0;
 myLng = 0;
@@ -26,7 +29,6 @@ function getLocations()
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
             renderMap();
-            console.log("3. Leaving the function(position)...");
         });
     }
     else {
@@ -36,19 +38,17 @@ function getLocations()
 
 function renderMap()
 {
-    console.log("in renderMap")
     me = new google.maps.LatLng(myLat, myLng)
     map.panTo(me); 
-    console.log("panned");
 
     // MARKER FOR MYSELF
     meMarker = new google.maps.Marker({
         position: me,
-        title: login,
+        title: login + " <br> Here I Am!"
+        map: map,
         icon: 'funny_icon.png' 
     });
-    meMarker.setMap(map);
-    console.log("meMarker set");
+
     google.maps.event.addListener(meMarker, 'click', function() {
         infowindow.setContent(meMarker.title);
         infowindow.open(map, meMarker);
@@ -65,19 +65,17 @@ function markOthers()
     request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //Parse JSON response
     request.onreadystatechange = parseResponse;
     request.send(params);
-    console.log(params);
-    console.log("params sent");
 }
 
 function parseResponse() 
 {
-    console.log("sending params");
     if (request.readyState == 4 && request.status == 200) {
-        console.log("got data back");
-        toUpdate = document.getElementById("info");
         data = JSON.parse(request.responseText);
+        // start at index i == 1, since we have our own location at index 0
         for (i = 1; i < data.length; i++)
             createMarker(data[i]);
     }
@@ -86,47 +84,35 @@ function parseResponse()
 function createMarker(person)
 {
     var pos = new google.maps.LatLng(person.lat, person.lng)
-    // MARKER FOR MYSELF
     var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: person.login + ': <br>' + distanceBetween(myLat, myLng, person.lat, person.lng).toFixed(4) + ' Miles away'
+        title: person.login + ': <br>'
+             + distanceBetween(myLat, myLng, person.lat, person.lng).toFixed(4) + ' Miles away'
     });
-    //marker.setMap(map);
-    //console.log("Marker set");
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(marker.title);
         infowindow.open(map, marker);
     });
 }
 
-Number.prototype.toRad = function() {
-    return this * Math.PI / 180;
-}
-
+// Harvarsine Formula - Taken from:
+// http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
 function distanceBetween(lat1, lng1, lat2, lng2) {
     var R = 3959;
     var dlat = lat2 - lat1;
     var rlat = dlat.toRad();
     var dlng = lng2 - lng1;
     var rlng = dlng.toRad();
-    var a = Math.sin(rlat/2) * Math.sin(rlat/2) + 
-                    Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
-                    Math.sin(rlng/2) * Math.sin(rlng/2);  
+
+    var a =   Math.sin(rlat/2) * Math.sin(rlat/2) + 
+            + Math.cos(lat1.toRad()) * Math.cos(lat2.toRad())
+            * Math.sin(rlng/2) * Math.sin(rlng/2);  
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = R * c; 
     return d;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+}
