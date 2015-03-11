@@ -90,7 +90,7 @@ function createMarker(person)
     var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: person.login + ':\n' + distanceBetween(myLat, myLng, person.lat, person.lng) + ' Miles away'
+        title: person.login + ': ' + distanceBetween(myLat, myLng, person.lat, person.lng).toFixed(4) + ' Miles away'
     });
     //marker.setMap(map);
     //console.log("Marker set");
