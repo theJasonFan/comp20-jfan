@@ -91,7 +91,7 @@ function createMarker(person)
     });
     //marker.setMap(map);
     //console.log("Marker set");
-    google.maps.event.addListener(meMarker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(marker.title);
         infowindow.open(map, marker);
     });
