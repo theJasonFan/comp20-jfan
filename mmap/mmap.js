@@ -2,15 +2,27 @@ myLat = 0;
 myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
+me = new google.maps.LatLng(myLat, myLng);
+myOptions = {
+        zoom: 13,
+        center: me,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+}
 
-function init() 
+function init()
+{
+    map = new google.maps.Map(document."map_canvas"), myOptions);
+    getLocations();
+}
+
+function getLocations() 
 {
     elem = document.getElementById("info");
     if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
         navigator.geolocation.getCurrentPosition(function(position) {
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
-            postLoc();
+            renderMap();
             console.log("3. Leaving the function(position)...");
         });
     }
@@ -48,3 +60,34 @@ function printLocs(data)
 {
     elem.innerHTML += "<p>" + data.login + "-" + data.lat + "," + data.lng + "</p>";
 }
+
+function renderMap()
+{
+    me = new google.maps.LatLng(myLat, myLng)
+    map.panTo(me);
+    meMarker = new google.maps.Marker({
+        position: me,
+        title: "This is where I am!"
+    })
+    marker.setMap(map);
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(marker.title);
+        infowindow.open(map, marker);
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
