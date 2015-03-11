@@ -9,13 +9,13 @@
             // Custom image icon: IvoryMalinov @  piq.codeus.net/picuter/70010/sumo_wrestler
             // Haversine formula: http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
 
-            myLat = 0;
-            myLng = 0;
-            login = "LindyContreras";
-            url = "https://secret-about-box.herokuapp.com/sendLocation";
-            me = new google.maps.LatLng(myLat, myLng);
-            infowindow = new google.maps.InfoWindow();
-            myOptions = {
+            var myLat = 0;
+            var myLng = 0;
+            var login = "LindyContreras";
+            var url = "https://secret-about-box.herokuapp.com/sendLocation";
+            var me = new google.maps.LatLng(myLat, myLng);
+            var infowindow = new google.maps.InfoWindow();
+            var myOptions = {
                     zoom: 13,
                     center: me,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -48,7 +48,7 @@
                 map.panTo(me); 
 
                 // MARKER FOR MYSELF
-                meMarker = new google.maps.Marker({
+                var meMarker = new google.maps.Marker({
                     position: me,
                     title: login + " <br> Here I Am!",
                     map: map,
