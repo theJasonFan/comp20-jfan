@@ -3,6 +3,7 @@ myLng = 0;
 login = "LindyContreras";
 url = "https://secret-about-box.herokuapp.com/sendLocation";
 me = new google.maps.LatLng(myLat, myLng);
+infowindow = new google.maps.InfoWindow();
 myOptions = {
         zoom: 13,
         center: me,
