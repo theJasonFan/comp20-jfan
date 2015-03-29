@@ -23,7 +23,7 @@
     $("input").keyup(function(e){
         if (e.which == 13) {
             date = new Date();
-            txt = date.toDateString() + $('input').val();
+            txt = date.toUTCString() + " - " + $('input').val();
             $('input').val('');
             $('#log').prepend("<p>" + txt +"</p>");
             localStorage[date.getTime()] = txt;
