@@ -22,8 +22,7 @@
     <h1>Captain's Log</h1>
     <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
     <div id="log"></div>
-</body>
-<script>
+    <script>
     $("input").keyup(function(e){
         if (e.which == 13) {
             date = new Date();
@@ -35,5 +34,7 @@
             localStorage['captainslogs'] = logs;
         }
     });
-</script>
+    </script>
+</body>
+
 </html>
