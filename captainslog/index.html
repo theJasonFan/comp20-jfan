@@ -6,8 +6,12 @@
     <title>Captain's Log</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
-      // Most of your work will be done here...
-    </script>
+        $(document).ready(function(){
+            for (key in localStorage) {
+                $('#log').prepend("<p>"+ localStorage[key] + "</p>");
+            }
+        });
+     </script>
 </head>
 
 <body>
@@ -15,4 +19,15 @@
     <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
     <div id="log"></div>
 </body>
+<script>
+    $("input").keyup(function(e){
+        if (e.which == 13) {
+            date = new Date();
+            txt = date.toDateString() + $('input').val();
+            $('input').val('');
+            $('#log').prepend("<p>" + txt +"</p>");
+            localStorage[date.getTime()] = txt;
+        }
+    });
+</script>
 </html>
