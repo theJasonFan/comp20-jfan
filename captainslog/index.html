@@ -9,7 +9,7 @@
     <script>
         $(document).ready(function(){
             if (localStorage['captainslogs'] == null) {
-                localStorage['captainslogs'] = [];
+                localStorage['captainslogs'] = '[]';
             }
             var logs = JSON.parse(localStorage['captainslogs']);
             for (i in logs) {
@@ -23,7 +23,6 @@
     <h1>Captain's Log</h1>
     <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
     <div id="log"></div>
-    <!--
     <script>
     $("input").keyup(function(e){
         if (e.which == 13) {
@@ -33,10 +32,9 @@
             $('input').val('');
             $('#log').prepend("<p>" + txt +"</p>");
             logs.unshift(txt);
-            localStorage['captainslogs'] = logs;
+            localStorage['captainslogs'] = JSON.stringify(logs);
         }
     });
-    -->
     </script>
 </body>
 
