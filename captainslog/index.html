@@ -7,8 +7,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            for (key in localStorage) {
-                $('#log').prepend("<p>"+ localStorage[key] + "</p>");
+            if (localStorage['captainslogs'] == null) {
+                localStorage['captainslogs'] = []
+            }
+            var logs = JSON.parse(localStorage['captainslogs']);
+            for (i in logs) {
+                $('#log').append("<p>"+ logs[i] + "</p>");
             }
         });
      </script>
@@ -22,11 +26,13 @@
 <script>
     $("input").keyup(function(e){
         if (e.which == 13) {
-            date = new Date();
+            date = new Date()
+            var logs = JSON.parse(localStorage['captainslogs']);
             txt = date.toUTCString() + " - " + $('input').val();
             $('input').val('');
             $('#log').prepend("<p>" + txt +"</p>");
-            localStorage[date.getTime()] = txt;
+            logs.unshift(txt);
+            localStorage['captainslogs'] = JSON.stringify(logs);
         }
     });
 </script>
