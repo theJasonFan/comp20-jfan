@@ -9,5 +9,4 @@ I worked on my own
 ###Time spent:
 Approximately 2 hours
 
-#####Link:
-[Link to Captains Log page](http://tuftsdev.github.io/comp20-jfan/captainslog/index.html)
+[Captains Log](http://tuftsdev.github.io/comp20-jfan/captainslog/index.html)
