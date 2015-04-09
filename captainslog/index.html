@@ -19,7 +19,7 @@
             }
 
             $("input").change(function(){
-                var txt = new Date().toUTCString() + " - " + $("input").val();
+                var txt = new Date().toUTCString() + " - " + "haha";$("input").val();
                 $("input").val("");
                 $("#log").prepend("<p>" + txt +"</p>");
                 logs.unshift(txt);

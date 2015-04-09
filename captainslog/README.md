@@ -10,3 +10,6 @@ I worked on my own
 Approximately 2 hours
 
 [Captains Log](http://tuftsdev.github.io/comp20-jfan/captainslog/index.html)
+
+###### Anecdotes:
+The submitted version is so prone to XSS its not even funny.
