@@ -3,7 +3,10 @@
 <html>
 
 <head>
-    <title>Captain's Log</title>
+
+
+<title>Captain's Log</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.7.0/validate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -12,14 +15,14 @@
             if (logs != null) {
                 logs = JSON.parse(logs);
                 for (var i in logs) {
-//                    $("#log").append("<p>"+ logs[i] + "</p>");
+                    $("#log").append("<p>"+ logs[i] + "</p>");
                 }
             } else {
                 logs = [];
             }
 
             $("input").change(function(){
-                var txt = new Date().toUTCString() + " - " + "haha";$("input").val();
+                var txt = new Date().toUTCString() + " - " + $("input").val();
                 $("input").val("");
                 $("#log").prepend("<p>" + txt +"</p>");
                 logs.unshift(txt);
