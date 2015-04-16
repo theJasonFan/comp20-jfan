@@ -52,7 +52,7 @@
                 // MARKER FOR MYSELF
                 var meMarker = new google.maps.Marker({
                     position: me,
-                    title: login + " <br> Here I Am!",
+                   title: login + " <br> here i am!",
                     map: map,
                     icon: 'funny_icon.png' 
                 });
@@ -62,7 +62,7 @@
                     infowindow.open(map, meMarker);
                 });
 
-                // MARKER FOR OTHERS
+                // MARKER response
                 markOthers();
             }
 
@@ -84,8 +84,10 @@
                 if (request.readyState == 4 && request.status == 200) {
                     data = JSON.parse(request.responseText);
                     // start at index i == 1, since we have our own location at index 0
-                    for (i = 1; i < data.length; i++)
-                        createMarker(data[i]);
+                    for (i = 0; i < data.length; i++)
+                        if (data[i].login != login) {
+                            createMarker(data[i]);
+                        }
                 }
             }
 
@@ -99,6 +101,9 @@
                          + distanceBetween(myLat, myLng, person.lat, person.lng).toFixed(4)
                          + " Miles away"
                 });
+                if (person.login == login) {
+    
+                }
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.setContent(marker.title);
                     infowindow.open(map, marker);
