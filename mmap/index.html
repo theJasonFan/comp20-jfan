@@ -85,7 +85,7 @@
                     data = JSON.parse(request.responseText);
                     // start at index i == 1, since we have our own location at index 0
                     for (i = 0; i < data.length; i++)
-                        if (data[i].login != login) {
+                       if (data[i] != login) {
                             createMarker(data[i]);
                         }
                 }
