@@ -39,7 +39,7 @@
       </table>
       <h3>Methodology</h3>
       <div class='uline'></div>
-      <p><span class='bold'>Phase 1 - black box testing:</span> In the first phase, we pretend to be a malicious user and attempt to abuse the API. Much of this involved XSS attacks via POST through postman and curl<span class='bold'>Phase 2 - White box testing:</span> we look at the code and test glaring security holes that we did not encounter above <span class='bold'>Phase 3 - System Overload:</span> In this phase we write scripts to automate attacks on vulnerabilities.</p>
+      <p><span class='bold'>Phase 1 - black box testing:</span> In the first phase, we pretend to be a malicious user and attempt to abuse the API. Much of this involved XSS attacks via POST through postman and curl. <span class='bold'>Phase 2 - White box testing:</span> we look at the code and test glaring security holes that we did not encounter above. <span class='bold'>Phase 3 - System Overload:</span> In this phase we write scripts to automate attacks on vulnerabilities.</p>
       <h3>Abstract of findings</h3>
       <p> We found vulnerabilities that allowed malicious users to insert runnable code onto our index page and allowed attackers to exauhst the available resources on the server, crashing the site. We also found an error in the implementation of the service. The first two vulnerabilites are dangerous and possibly very costly. Examples of how these vulnerabilities were found and can be exploited are explained below.</p>
       <h3>Issues Found</h3>
@@ -99,6 +99,10 @@
         </tr>
       </table>
       <p> Solution: chance the boolean statements to  <code>if (... != undefined ... )</code></p>
+        <h4>Conclusion</h4>
+    <div class='uline'></div>
+    <p>It is easier than every for everyone to write their own application, and day by day the public gets more comfortable with submitting private information onto many different web apps. This security report shows that it is <span class='bold'>VERY</span> easy to write code that is vulnerable to all kinds of attacks. How can we solve this? First, we must educate the modern user and youth to understand the importance of security and privacy. We need to hold developers responsible for writing good software. Second, <span>do not reinvent the wheel</span>, it is impossible for someone to write big secure web applications by themselves. Peer review code, and use tools that are already available to validate data. Finally, as a wise man once said, <span class='bold'>never trust user input</span>, most of the attacks above were possible because there was no validation of user input. </p>
     </div>
+  
   </div>
 </body>
