@@ -1,0 +1,16 @@
+.bold{
+    font-weight: bold;
+}
+.uline {
+  border-bottom-width: 1px;
+  border-bottom-style: ridge;
+  border-bottom-color: grey;
+}
+
+.high{
+  color:red;
+}
+  
+td{
+  padding: 5px;
+}

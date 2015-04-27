@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<head>
+  <title> Security - Assignment 4</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1> Jason Fan - Assignment 4</h1>
+    <div class="container">
+      <h3>Introduction - Our Product</h3>
+      <div class="uline"></div>
+      <p> We were tasked with build the API for our  "The Real Marauder's Map" Web-app logged user's locations and displays each user's location on a map powered by the Google Maps API. The specifcation of the assignment required the following API calls/routes:</p>
+      <table class="table" style="width:70%">
+        <tr class="bold">
+          <td>Route</td>
+          <td>Method</td>
+          <td> Description</td>
+        </tr>
+        <tr>
+          <td>/SendLocation</td>
+          <td>POST</td>
+          <td>Client posts with the parameters,<code>login</code>, <code>lng</code> and <code>lat</code>, for their login, longditde, and latitude respectively. Our server saves this to a data base and responds with an array of objects containing, <code>_id</code>, <code>login</code><code>lat</code><code>lng</code><code>created_at</code> information of all users.</td>
+        </tr>
+        <tr>
+          <td>/Location.json</td>
+          <td>GET</td>
+          <td>Takes <code>login</code> parameter and responds with a json object containing: <code>_id</code>, <code>login</code><code>lat</code>,<code>lng</code> and <code>created_at</code>, with respect to the corresponding login.</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>GET</td>
+          <td>Index page that shows the login, location, and last access/logged date for all users.</td>
+        </tr>
+      </table>
+      <h3>Methodology</h3>
+      <div class='uline'></div>
+      <p><span class='bold'>Phase 1 - black box testing:</span> In the first phase, we pretend to be a malicious user and attempt to abuse the API. Much of this involved XSS attacks via POST through postman and curl<span class='bold'>Phase 2 - White box testing:</span> we look at the code and test glaring security holes that we did not encounter above <span class='bold'>Phase 3 - System Overload:</span> In this phase we write scripts to automate attacks on vulnerabilities.</p>
+      <h3>Abstract of findings</h3>
+      <p> We found vulnerabilities that allowed malicious users to insert runnable code onto our index page and allowed attackers to exauhst the available resources on the server, crashing the site. We also found an error in the implementation of the service. The first two vulnerabilites are dangerous and possibly very costly. Examples of how these vulnerabilities were found and can be exploited are explained below.</p>
+      <h3>Issues Found</h3>
+      <h4> XSS - Cross Site Scripting - Dangerous, and lots of fun</h4>
+      <p class='bold'> Severity: High</p>
+      <p class='bold'> Severity: High</p>
+      <p class='bold'> Description of issue:</p>
+      <p> Throught the <code>/sendLocation</code> route, we were able to perform XSS attacks by posting JavaScript via the <code>login</code> parameter, the target has no serversied validation. Inserting <code>script</code> tags into the DOM allows us to do everything we want.</p>
+      <p> One of the more dangerous ways this could work, is XSS allows us to write and read cookies, if this domain had cookies that had session information, we could steal these and spoof user sessions on other pages</p>
+      <p> Here are some examples:</p>
+      <table style="width:70%">
+        <tr class='bold'>
+          <td>Result </td>
+          <td>Payload</td>
+        </tr>
+        <tr>
+          <td><img src='xss_result.png' width='320' height='216' alt='xss example image'></td>
+          <td><code> &lt;script&gt;<br> window.document.body.innerHTML='&lt;style&gt;body{background-image:url("http://i.imgur.com/6p94lCK.jpg");background-size:25%;})&lt;/style&gt;'; <br> /**<br> here can be more coe that does malaicious things, eg&#41; we can send document.cookie to our servers to collect session data on site<br>**/<br> /&lt;/script &gt;</code> </td>
+        </tr>
+      </table>
+      <p><span class='bold'> Solution: </span> Simple, server-side validation that escapes javascript special characters. We can define a function such as the following: </p>
+      <p><code>function escapeHtml(string) {<br>
+            &nbsp; return unsafe
+         <br>&nbsp;&nbsp;&nbsp;.replace(/&amp;/g, "&amp;amp;")
+         <br>&nbsp;&nbsp;&nbsp;.replace(/&lt;/g, "&amp;lt;")
+         <br>&nbsp;&nbsp;&nbsp;.replace(/&gt;/g, "&amp;gt;")
+         <br>&nbsp;&nbsp;&nbsp;.replace(/"/g, "&amp;quot;")
+         <br>&nbsp;&nbsp;&nbsp;.replace(/'/g, "&amp;#039;");
+          <br>}
+        </code></p>
+        <a href='http://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript'>From this StackOverflow question</a>
+      <div class='uline'></div>
+      <h4> Denial of Service - <code>megacurl.py</code></h4>
+      <p class='bold'> Severity: High/medium</p>
+      <p class='bold'> Description of issue:</p>
+      <p> We discovered that the site can be easily downed by a simply python script using pycurl. We run the following script:</p>
+      <img src="megacurl.png" width=500 alt='pycurl code'>
+      <br>
+      <p>and this is the result, the page/server crashes:</p>
+      <img src='dos_complete.png' width=600 alt='image of server error'>
+      <p> this is what the server gets: </p>
+      <img src='server_overload.png' width=600 alt='overload!'>
+      <p> The above script sends posts with unique logins millions of characters long, millions of times, quickly taking up space in the database and the available bandwidth on the heroku-app.</p>
+      <p> DOS attacks can be exploited for money, if this was a more critical service, a company could experience loss of users and loss of income.</p>
+      <p class='bold'> Solution:</p>
+      <p> Limit the maximum length of login string server side, and limit the rate at which an IP address can send the server POSTs</p>
+      <div class="uline"></div>
+      <h4> Bugs </h4>
+      <p> Severity: low</p>
+      <p class='bold'> Description of issue:</p>
+      <p> When sending a lat or lng of 0, the boolean expression that checks if input is undefined evaluates to false. Users at EXACTLY 0 lat or 0 longditude will not be able to use the app. This use case is very rare though, nonetheless, this is a bug that may affect users</p>
+      <table style="width:70%">
+        <tr>
+          <td>
+            <img src='0lng_bug.png' alt='image of bug on postman' width='500' height='300'>
+          </td>
+        </tr>
+      </table>
+      <p> Solution: chance the boolean statements to  <code>if (... != undefined ... )</code></p>
+    </div>
+  </div>
+</body>
